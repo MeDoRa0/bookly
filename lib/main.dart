@@ -16,8 +16,10 @@ class ReadBook extends StatelessWidget {
     return GetMaterialApp(
       //to remove debug banner
       debugShowCheckedModeBanner: false,
-      //we put color here because we want background of all screen with same color
-      theme: ThemeData().copyWith(
+      //this will make theme dark
+      theme: ThemeData.dark(
+      ).copyWith(
+        //we put color here because we want background of all screen with same color
         scaffoldBackgroundColor: kPrimaryColor,
       ),
       home: SplashView(),
