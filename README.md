@@ -1,6 +1,6 @@
 # bookly
 
-A new Flutter project.
+an app that provide free books to read
 
 ## Getting Started
 
