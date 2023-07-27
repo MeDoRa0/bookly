@@ -4,7 +4,7 @@ an app that provide free books to read
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+I use MVVM to creat application that show free books to read.
 
 A few resources to get you started if this is your first Flutter project:
 
