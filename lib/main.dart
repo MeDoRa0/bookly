@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'constant.dart';
-import 'views/widgets/splash_view.dart';
+import 'views/splash_view.dart';
 
 void main() {
   runApp(const ReadBook());
