@@ -28,7 +28,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     initSlidingAnimation();
 //calling this method to go to home screen
     navigatetoHome();
-  } 
+  }
 
   //we must make dispose with every controlller to prevent memory leak
   @override
@@ -44,7 +44,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(Assets.imagesLogo),
+        Image.asset(Images.imagesLogo),
         //AnimatedBuilder will make this widget rebuild when animation value change
         SlidingText(slidingAnimation: slidingAnimation),
       ],
@@ -65,10 +65,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   //method to go to home page with transion
   void navigatetoHome() {
-     Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Get.to(() => const HomeView(),
           transition: Transition.fade, duration: kTransionDuration);
     });
   }
-
 }
