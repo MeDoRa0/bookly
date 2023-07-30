@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'constant.dart';
 import 'views/splash_view.dart';
 
@@ -17,10 +18,11 @@ class ReadBook extends StatelessWidget {
       //to remove debug banner
       debugShowCheckedModeBanner: false,
       //this will make theme dark
-      theme: ThemeData.dark(
-      ).copyWith(
+      theme: ThemeData.dark().copyWith(
         //we put color here because we want background of all screen with same color
         scaffoldBackgroundColor: kPrimaryColor,
+        //main font for the app 
+        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
       home: const SplashView(),
     );
