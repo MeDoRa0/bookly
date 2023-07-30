@@ -22,7 +22,7 @@ class ReadBook extends StatelessWidget {
         //we put color here because we want background of all screen with same color
         scaffoldBackgroundColor: kPrimaryColor,
       ),
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }

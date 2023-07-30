@@ -45,7 +45,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Image.asset(Assets.imagesLogo),
-        //AnimatedBuilder will make this widget rebuild when animation value change
         SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
