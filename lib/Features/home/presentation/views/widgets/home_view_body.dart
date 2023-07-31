@@ -1,5 +1,6 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'best_seller_item.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
@@ -32,6 +33,30 @@ class HomeViewBody extends StatelessWidget {
           height: 20,
         ),
         BestSellerItem(),
+      ],
+    );
+  }
+}
+
+class BookRating extends StatelessWidget {
+  const BookRating({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [ 
+        Icon(
+          FontAwesomeIcons.solidStar,
+          color: Color(0xffFFDD4F),
+        ),
+        Text(
+          '4.8',
+          style: Styles.textStyle16,
+        ),
+        Text(
+          '(2450)',
+          style: Styles.textStyle14,
+        ),
       ],
     );
   }
