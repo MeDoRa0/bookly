@@ -7,7 +7,10 @@ class BookDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Book_details_view_body(),
+      //SafeArea is a widget that make the UI start under status bar (the bar that contain time and bettary , wifi of devaice)
+      body: SafeArea(
+        child: Book_Details_View_Body(),
+      ),
     );
   }
 }
