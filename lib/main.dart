@@ -1,8 +1,7 @@
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constant.dart';
-import 'views/splash_view.dart';
 
 void main() {
   runApp(const ReadBook());
@@ -13,18 +12,19 @@ class ReadBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //using GetMatrialApp for navigation
-    return GetMaterialApp(
+    //using MatrialApp.router for navigation
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       //to remove debug banner
       debugShowCheckedModeBanner: false,
       //this will make theme dark
       theme: ThemeData.dark().copyWith(
         //we put color here because we want background of all screen with same color
         scaffoldBackgroundColor: kPrimaryColor,
-        //main font for the app 
+        //main font for the app
         textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
-      home: const SplashView(),
     );
   }
 }
+

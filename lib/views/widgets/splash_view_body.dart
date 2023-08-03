@@ -1,8 +1,7 @@
-import 'package:bookly/Features/home/presentation/views/home_view.dart';
-import 'package:bookly/constant.dart';
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/images/app_images.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'sliding_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -64,9 +63,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   //method to go to home page with transion
   void navigatetoHome() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const HomeView(),
-          transition: Transition.fade, duration: kTransionDuration);
-    });
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        //this will make the app move from splash screen to home screen
+        GoRouter.of(context).push(AppRouter.kHomeView);
+      },
+    );
   }
 }
