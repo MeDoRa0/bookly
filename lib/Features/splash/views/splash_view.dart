@@ -1,4 +1,4 @@
-import 'package:bookly/views/widgets/splash_view_body.dart';
+import 'package:bookly/Features/splash/views/splash_view_body.dart';
 import 'package:flutter/material.dart';
 
 

@@ -1,3 +1,4 @@
+import 'package:bookly/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/Features/home/presentation/views/widgets/custom_book_item.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,14 @@ class Book_Details_View_Body extends StatelessWidget {
               style: Styles.textStyle18.copyWith(
                   fontStyle: FontStyle.italic, fontWeight: FontWeight.w500),
             ),
-          )
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          //we use bookrating widget and changed its mainaxisalignment to be in center
+          const BookRating(
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
         ],
       ),
     );
