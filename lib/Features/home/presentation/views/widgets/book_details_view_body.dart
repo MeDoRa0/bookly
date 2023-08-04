@@ -4,6 +4,7 @@ import 'package:bookly/Features/home/presentation/views/widgets/custom_book_item
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'custom_book_details_appbar.dart';
+import 'you_may_like_list_view.dart';
 
 class Book_Details_View_Body extends StatelessWidget {
   const Book_Details_View_Body({super.key});
@@ -50,8 +51,27 @@ class Book_Details_View_Body extends StatelessWidget {
             height: 37,
           ),
           const BooksAction(),
+          const SizedBox(
+            height: 50,
+          ),
+          //wrap text with Align widget to adjust its postion in screen
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'You can also like',
+              style: Styles.textStyle14.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          const YouMayAlsoLikeListView(),
         ],
       ),
     );
   }
 }
+
+

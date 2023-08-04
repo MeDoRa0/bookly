@@ -9,7 +9,7 @@ class CustomBookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       //asspectRatio will change the width and heghit width/height
-      aspectRatio: 2.7 / 4,
+      aspectRatio: 2.6 / 4,
       child: Container(
         //I disable the code below because i use AspectRatio widget instead
         //MediaQuery will adjust the height and width of container in term of screen dimensions
