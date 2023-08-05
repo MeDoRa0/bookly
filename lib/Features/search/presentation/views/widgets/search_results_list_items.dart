@@ -1,3 +1,4 @@
+import 'package:bookly/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/constant.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
@@ -5,14 +6,12 @@ import 'package:bookly/images/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'book_rating.dart';
-
-class BestSellerListItem extends StatelessWidget {
-  const BestSellerListItem({super.key});
+//the list that will show in search result
+class SearchResultsListItems extends StatelessWidget {
+  const SearchResultsListItems({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //this to go to book details when press on book
     return GestureDetector(
       onTap: () {
         GoRouter.of(context).push(AppRouter.kBookDetailsView);
@@ -23,20 +22,17 @@ class BestSellerListItem extends StatelessWidget {
         //width: 70,
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
-              child: AspectRatio(
-                //aspectRatio will change the width and heghit width/height
-                aspectRatio: 2.6 / 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(
-                        Assets.imagesTestImage,
-                      ),
+            AspectRatio(
+              //aspectRatio will change the width and heghit width/height
+              aspectRatio: 2.6 / 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.white,
+                  image: const DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(
+                      Assets.imagesTestImage,
                     ),
                   ),
                 ),
@@ -81,12 +77,7 @@ class BestSellerListItem extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          right: 47,
-                        ),
-                        child: BookRating(),
-                      ),
+                      const BookRating(),
                     ],
                   )
                 ],
