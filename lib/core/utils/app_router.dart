@@ -1,11 +1,13 @@
 import 'package:bookly/Features/home/presentation/views/book_details_view.dart';
 import 'package:bookly/Features/home/presentation/views/home_view.dart';
+import 'package:bookly/Features/search/presentation/views/search_view.dart';
 import 'package:bookly/Features/splash/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kBookDetailsView = '/bookDetailsView';
+  static const kSearchView = '/searchView';
   // GoRouter configuration , we use this package for navigation in this app
   // static so any file can access this file
   static final router = GoRouter(
@@ -23,6 +25,10 @@ abstract class AppRouter {
       GoRoute(
         path: kBookDetailsView,
         builder: (context, state) => const BookDetailsView(),
+      ),
+        GoRoute(
+        path: kSearchView,
+        builder: (context, state) => const SearchView(),
       ),
     ],
   );
