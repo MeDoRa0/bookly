@@ -1,5 +1,6 @@
 //this widget make text sliding
 import 'package:flutter/material.dart';
+
 //this make text move in splash screen
 class SlidingText extends StatelessWidget {
   const SlidingText({

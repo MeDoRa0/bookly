@@ -27,4 +27,3 @@ class ReadBook extends StatelessWidget {
     );
   }
 }
-
