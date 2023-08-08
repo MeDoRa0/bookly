@@ -1,4 +1,4 @@
-import 'package:bookly/Features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:bookly/Features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'custom_app_bar.dart';
@@ -24,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  'Best Seller',
+                  'Newest Books',
                   style: Styles.textStyle18,
                 ),
               ),
@@ -36,7 +36,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         //this will fill the remaining part in screen, its better to use it with listview
         SliverFillRemaining(
-          child: BestsellerListview(),
+          child: NewestListView(),
         ),
       ],
     );
