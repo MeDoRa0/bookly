@@ -30,7 +30,8 @@ class ReadBook extends StatelessWidget {
         BlocProvider(
           create: (context) => NewestBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+            //after creating NewestBooksCubit, call fetchNewestBooks (.. spread opreator)
+          )..fetchNewestBooks(),
         ),
       ],
       //using MatrialApp.router for navigation

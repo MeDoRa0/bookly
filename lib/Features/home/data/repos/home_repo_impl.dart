@@ -57,12 +57,14 @@ class HomeRepoImpl implements HomeRepo {
         // this will show the message error in failuer class
         return left(
           ServerFailure.fromDioException(e),
+        
         );
       }
       // non DioException messages
       return left(
         ServerFailure(
-          e.toString(),
+          e.toString(
+          ),
         ),
       );
     }

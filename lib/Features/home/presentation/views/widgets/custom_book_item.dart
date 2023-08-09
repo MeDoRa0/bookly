@@ -1,5 +1,5 @@
 //the item in listview in home screen
-import 'package:bookly/images/app_images.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookImage extends StatelessWidget {
@@ -9,22 +9,18 @@ class CustomBookImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      //asspectRatio will change the width and heghit width/height
-      aspectRatio: 2.6 / 4,
-      child: Container(
-        //I disable the code below because i use AspectRatio widget instead
-        //MediaQuery will adjust the height and width of container in term of screen dimensions
-        //height: MediaQuery.of(context).size.height * .25,
-        //width: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: NetworkImage(
-              imageUrl,
-            ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: AspectRatio(
+        //asspectRatio will change the width and heghit width/height
+        aspectRatio: 2.6 / 4,
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(),
           ),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
     );
