@@ -24,7 +24,8 @@ class ReadBook extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+            //after creating FeaturedBooksCubit, call fetchFeaturedBook (.. spread opreator)
+          )..fetchFeaturedBook(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
