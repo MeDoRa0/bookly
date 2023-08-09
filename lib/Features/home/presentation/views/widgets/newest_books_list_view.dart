@@ -21,11 +21,14 @@ class NewestListView extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             //this to remove the default padding of listview
             padding: EdgeInsets.zero,
-            itemCount: 10,
+            //this to show the full length of books in list
+            itemCount: state.books.length,
             itemBuilder: (context, index) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: NewestListItem(),
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: NewestListItem(
+                  bookModel: state.books[index],
+                ),
               );
             },
           );
