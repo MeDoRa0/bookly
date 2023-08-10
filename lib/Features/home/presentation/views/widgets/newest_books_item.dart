@@ -17,7 +17,10 @@ class NewestListItem extends StatelessWidget {
     //this to go to book details when press on book
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
+        GoRouter.of(context).push(
+          AppRouter.kBookDetailsView,
+          extra: bookModel,
+        );
       },
       child: SizedBox(
         //change the height to 105 after finish best seller list

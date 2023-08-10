@@ -22,10 +22,12 @@ class _BookDetailsViewState extends State<BookDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       //SafeArea is a widget that make the UI start under status bar (the bar that contain time and bettary , wifi of devaice)
       body: SafeArea(
-        child: Book_Details_View_Body(),
+        child: Book_Details_View_Body(
+          bookModel: widget.bookModel,
+        ),
       ),
     );
   }
