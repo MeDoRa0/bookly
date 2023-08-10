@@ -16,7 +16,7 @@ class YoumayAlsoLikeSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 30),
             child: Text(
-              'You can also like',
+              'You may also like',
               style: Styles.textStyle14.copyWith(
                 fontWeight: FontWeight.w600,
               ),

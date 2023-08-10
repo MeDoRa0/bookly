@@ -55,7 +55,41 @@ class HomeRepoImpl implements HomeRepo {
       }
       // i determine that the return is the right side its value list of books
       return right(books);
-    } on Exception catch (e) {
+    } catch (e) {
+      if (e is DioException) {
+        // this will show the message error in failuer class
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      // non DioException messages
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimllerBooks(
+      {required String category}) async {
+    try {
+      var data = await apiService.get(
+          //we get the end point from api in postman after selecting filtering=free ebooks, sorting=newest
+          endPoint:
+              'volumes?Filtering=free-ebooks&Sorting=relevance&q=computer scince');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        try {
+          books.add(BookModel.fromJson(item));
+        } catch (e) {
+          books.add(BookModel.fromJson(item));
+        }
+      }
+      // i determine that the return is the right side its value list of books
+      return right(books);
+    } catch (e) {
       if (e is DioException) {
         // this will show the message error in failuer class
         return left(
