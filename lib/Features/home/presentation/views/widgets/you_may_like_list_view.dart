@@ -1,4 +1,8 @@
+import 'package:bookly/Features/home/presentation/manger/simller_books_cubit/simller_books_cubit.dart';
+import 'package:bookly/Features/home/presentation/views/widgets/custom_error_widget.dart';
+import 'package:bookly/Features/home/presentation/views/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'custom_book_item.dart';
 
@@ -7,18 +11,31 @@ class YouMayAlsoLikeListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .15,
-      child: ListView.builder(
-        //scrolldirection will make the list scroll horizentally
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: CustomBookImage(imageUrl: 'https://images.pexels.com/photos/51342/books-education-school-literature-51342.jpeg?cs=srgb&dl=book-stack-books-education-51342.jpg&fm=jpg',),
+    return BlocBuilder<SimllerBooksCubit, SimllerBooksState>(
+      builder: (context, state) {
+        if (state is SimllerBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .15,
+            child: ListView.builder(
+              //scrolldirection will make the list scroll horizentally
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: CustomBookImage(
+                    imageUrl:
+                        'https://images.pexels.com/photos/51342/books-education-school-literature-51342.jpeg?cs=srgb&dl=book-stack-books-education-51342.jpg&fm=jpg',
+                  ),
+                );
+              },
+            ),
           );
-        },
-      ),
+        } else if (state is SimllerBooksFailuer) {
+          return CustomErrorWidget(errorMessage: state.errorMessage);
+        } else {
+          return const CustomLoadingIndicator();
+        }
+      },
     );
   }
 }
