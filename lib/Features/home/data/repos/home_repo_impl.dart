@@ -16,14 +16,18 @@ class HomeRepoImpl implements HomeRepo {
       var data = await apiService.get(
           //we get the end point from api in postman after selecting filtering=free ebooks, sorting=newest
           endPoint:
-              'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:Programming');
+              'volumes?Filtering=free-ebooks&Sorting=newest&q=computer scince');
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+        try {
+          books.add(BookModel.fromJson(item));
+        } catch (e) {
+          books.add(BookModel.fromJson(item));
+        }
       }
       // i determine that the return is the right side its value list of books
       return right(books);
-    } on Exception catch (e) {
+    } catch (e) {
       if (e is DioException) {
         // this will show the message error in failuer class
         return left(
@@ -44,8 +48,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await apiService.get(
           //we get the end point from api in postman after selecting filtering=free ebooks
-          endPoint:
-              'volumes?Filtering=free-ebooks&q=subject:Programming');
+          endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
@@ -57,14 +60,12 @@ class HomeRepoImpl implements HomeRepo {
         // this will show the message error in failuer class
         return left(
           ServerFailure.fromDioException(e),
-        
         );
       }
       // non DioException messages
       return left(
         ServerFailure(
-          e.toString(
-          ),
+          e.toString(),
         ),
       );
     }

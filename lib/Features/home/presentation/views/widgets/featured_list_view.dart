@@ -25,7 +25,7 @@ class FeaturedBooksListview extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: CustomBookImage(
                     imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                        state.books[index].volumeInfo.imageLinks?.thumbnail?? 'https://thumbs.dreamstime.com/b/no-image-available-icon-177641087.jpg',
                   ),
                 );
               },

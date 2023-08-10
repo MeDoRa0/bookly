@@ -26,10 +26,12 @@ class NewestListItem extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: CustomBookImage(
-                  imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
-                )),
+              padding: const EdgeInsets.only(left: 30),
+              child: CustomBookImage(
+                imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ??
+                    'https://thumbs.dreamstime.com/b/no-image-available-icon-177641087.jpg',
+              ),
+            ),
             const SizedBox(
               width: 30,
             ),
@@ -58,6 +60,8 @@ class NewestListItem extends StatelessWidget {
                   Text(
                     bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle14,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(
                     height: 3,
