@@ -5,27 +5,32 @@ import 'custom_search_textfield.dart';
 import 'search_results_list_view.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
+  const SearchViewBody({
+    super.key,
+  });
+  
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomSearchTextfield(),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text(
+          const Text(
             'Search Results :',
             style: Styles.textStyle16,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Expanded(child: SearchResultsListView()),
+          const Expanded(
+              child: SearchResultsListView(
+          )),
         ],
       ),
     );

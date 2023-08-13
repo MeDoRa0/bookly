@@ -1,20 +1,27 @@
 import 'package:bookly/Features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/Features/home/presentation/views/widgets/custom_book_item.dart';
 import 'package:bookly/constant.dart';
+import 'package:bookly/core/model/book_model/book_model.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/images/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 //the list that will show in search result
 class SearchResultsListItems extends StatelessWidget {
-  const SearchResultsListItems({super.key});
+  const SearchResultsListItems({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(
+          AppRouter.kBookDetailsView,
+        );
       },
       child: SizedBox(
         //change the height to 105 after finish best seller list
@@ -22,20 +29,11 @@ class SearchResultsListItems extends StatelessWidget {
         //width: 70,
         child: Row(
           children: [
-            AspectRatio(
-              //aspectRatio will change the width and heghit width/height
-              aspectRatio: 2.6 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      Assets.imagesTestImage,
-                    ),
-                  ),
-                ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: CustomBookImage(
+                imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ??
+                    'https://thumbs.dreamstime.com/b/no-image-available-icon-177641087.jpg',
               ),
             ),
             const SizedBox(
@@ -47,8 +45,9 @@ class SearchResultsListItems extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
+                    //show book title from api
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      bookModel.volumeInfo.title!,
                       style: Styles.textStyle20.copyWith(
                         fontFamily: kGTSectraFine,
                       ),
@@ -61,9 +60,12 @@ class SearchResultsListItems extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
-                  const Text(
-                    'J.K. Rowling',
+                  //show first author in book author list from api
+                  Text(
+                    bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle14,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(
                     height: 3,
@@ -71,13 +73,18 @@ class SearchResultsListItems extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
-                      const BookRating(),
+                      const Padding(
+                        padding: EdgeInsets.only(
+                          right: 47,
+                        ),
+                        child: BookRating(),
+                      ),
                     ],
                   )
                 ],
