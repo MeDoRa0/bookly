@@ -4,20 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSearchTextfield extends StatelessWidget {
-  CustomSearchTextfield({super.key, this.userSearch});
-    String? userSearch;
+  const CustomSearchTextfield({super.key,});
+   
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onSubmitted: (data) {
-        userSearch = data;
-        BlocProvider.of<SearchCubit>(context)
-            .fetchSearchBooks(userSearch: userSearch!);
-      },
-      onChanged: (data) {
-        userSearch = data;
-      },
+    onSubmitted: (value)=>
+    BlocProvider.of<SearchCubit>(context).fetchSearchBooks(userSearch: value),
+    
       decoration: InputDecoration(
         //search bar when not active
         enabledBorder: buildOutlinedInputBorder(),

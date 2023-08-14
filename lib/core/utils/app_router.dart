@@ -1,10 +1,13 @@
+import 'package:bookly/Features/search/presentation/manger/search_cubit/search_cubit.dart';
 import 'package:bookly/core/model/book_model/book_model.dart';
+import 'package:bookly/core/model/data/repos/App_repo.dart';
 import 'package:bookly/core/model/data/repos/app_repo_impl.dart';
 import 'package:bookly/Features/home/presentation/manger/simller_books_cubit/simller_books_cubit.dart';
 import 'package:bookly/Features/home/presentation/views/book_details_view.dart';
 import 'package:bookly/Features/home/presentation/views/home_view.dart';
 import 'package:bookly/Features/search/presentation/views/search_view.dart';
 import 'package:bookly/Features/splash/views/splash_view.dart';
+import 'package:bookly/core/utils/api_service.dart';
 import 'package:bookly/core/utils/service_locater.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +41,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSearchView,
-        builder: (context, state) =>  const SearchView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              SearchCubit(AppRepoImpl(getIt.get<ApiService>(),) as AppRepo,),
+          child: const SearchView(),
+        ),
       ),
     ],
   );

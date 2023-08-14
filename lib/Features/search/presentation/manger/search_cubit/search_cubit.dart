@@ -6,9 +6,8 @@ import 'package:equatable/equatable.dart';
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
-  SearchCubit(this.searchRepo) : super(SearchInitial());
+  SearchCubit(this.searchRepo, {String? userSearch}) : super(SearchInitial());
   final AppRepo searchRepo;
-  String? userSearch;
   Future<void> fetchSearchBooks({required String userSearch}) async {
     emit(SearchLoading());
     var result = await searchRepo.fetchSearchBooks(userSearch: userSearch);

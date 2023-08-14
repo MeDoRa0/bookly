@@ -4,9 +4,10 @@ import 'widgets/search_view_body.dart';
 
 // the search
 class SearchView extends StatelessWidget {
-  const SearchView({
+   const SearchView({
     super.key,
   });
+
 
   @override
   Widget build(BuildContext context) {

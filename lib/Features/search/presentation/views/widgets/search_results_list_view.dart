@@ -19,7 +19,7 @@ class SearchResultsListView extends StatelessWidget {
           return ListView.builder(
             //this to remove the default padding of listview
             padding: EdgeInsets.zero,
-            itemCount: state.books.length,
+
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
