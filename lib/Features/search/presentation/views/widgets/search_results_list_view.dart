@@ -1,9 +1,11 @@
 import 'package:bookly/Features/home/presentation/views/widgets/custom_error_widget.dart';
 import 'package:bookly/Features/home/presentation/views/widgets/custom_loading_indicator.dart';
 import 'package:bookly/Features/search/presentation/manger/search_cubit/search_cubit.dart';
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'search_results_list_items.dart';
 
@@ -53,8 +55,16 @@ class SearchResultsListView extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: SearchResultsListItems(
-                  bookModel: state.books[index],
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(
+                      AppRouter.kBookDetailsView,
+                      extra: state.books[index],
+                    );
+                  },
+                  child: SearchResultsListItems(
+                    bookModel: state.books[index],
+                  ),
                 ),
               );
             },
